@@ -5,7 +5,7 @@ export default {
     template: `
         <section class="home router-view">
             <h1>Hi {{ user.username }}!</h1>
-            <h1>We have {{ productCount }} Products in our store!</h1>
+            <h1 v-if="products">We have {{ productCount }} Products in our store!</h1>
             
             <section class="counter">
                 <h2>Count {{ countForDisplay }}</h2>
@@ -15,13 +15,7 @@ export default {
             <img src="../img/Store.png"/>
         </section>
     `,
-    data() {
-        return {
-            products: [],
-        }
-    },
     created() {
-        this.products = productService.query()
         showSuccessMsg('HomePage Loaded')
     },
     methods: {
@@ -33,11 +27,14 @@ export default {
         user() {
             return this.$store.state.user
         },  
+        products() {
+            return this.$store.state.products
+        },
         countForDisplay() {
             return this.$store.state.count
         },
         productCount() {
-            return 0
+            return this.products.length
         }
     }
 }

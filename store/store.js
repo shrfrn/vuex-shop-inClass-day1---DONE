@@ -8,6 +8,7 @@ const storeOptions = {
             count: 0,
             user: userService.getLoggedinUser(),
             cart: [],
+            products: null,
         }
     },
     mutations: {
@@ -20,6 +21,9 @@ const storeOptions = {
         removeFromCart({ cart }, { productId }) {
             const idx = cart.findIndex(prd => prd._id === productId)
             cart.splice(idx, 1)
+        },
+        setProducts(state, payload) {
+            state.products = payload.products
         },
     },
     getters: {
