@@ -13,6 +13,9 @@ export default {
             <ul v-if="user.orders.length">
                 <li v-for="order in user.orders">
                     <pre>{{ order }}</pre>
+                    <button @click="changeOrderStatus(order)">
+                        {{ order.status === 'PENDING' ? 'Approve' : 'Cancel' }}
+                    </button>
                 </li>
             </ul>
             <h4 v-else>No orders yet, <RouterLink to="/shop">make your first one</RouterLink></h4>
@@ -29,6 +32,13 @@ export default {
                 .then(() => {
                     this.$store.commit({ type: 'addFunds', amount: this.amount })
                     showSuccessMsg(`Added ${this.amount} Zuzim`)
+                })
+        },
+        changeOrderStatus(order) {
+            const newStatus = order.status === 'PENDING' ? 'APPROVED' : 'PENDING'
+            userService.changeOrderStatus(order._id, newStatus)
+                .then(() => {
+                    this.$store.commit({ type: 'changeOrderStatus', orderId: order._id, status: newStatus })
                 })
         }
     },

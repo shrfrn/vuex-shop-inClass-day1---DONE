@@ -36,6 +36,10 @@ const storeOptions = {
         addFunds(state, { amount }) {
             state.user.balance += amount
         },
+        changeOrderStatus({ user }, { orderId, status }){
+            const order = user.orders.find(order => order._id === orderId)
+            order.status = status
+        }
     },
     getters: {
         cartTotal({ cart }) {
