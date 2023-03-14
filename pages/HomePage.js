@@ -8,7 +8,7 @@ export default {
             <h1>We have {{ productCount }} Products in our store!</h1>
             
             <section class="counter">
-                <h2>Count {{countForDisplay}}</h2>
+                <h2>Count {{ countForDisplay }}</h2>
                 <button @click="inc(1)">+</button>
                 <button @click="inc(10)">+10</button>
             </section>
@@ -32,7 +32,7 @@ export default {
     },
     computed: {
         countForDisplay() {
-            return 101
+            return this.$store.state.count
         },
         productCount() {
             return 0
