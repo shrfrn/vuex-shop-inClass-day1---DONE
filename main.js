@@ -10,11 +10,17 @@ import AppFooter from './cmps/AppFooter.js'
 import UserMsg from './cmps/UserMsg.js'
 
 const storeOptions = {
+    strict: true,
     state() {
         return {
             count: 0,
         }
     },
+    mutations: {
+        increment(state, payload) {
+            state.count += payload.val
+        }
+    }
 }
 const store = createStore(storeOptions)
 

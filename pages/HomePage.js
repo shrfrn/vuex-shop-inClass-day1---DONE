@@ -27,7 +27,7 @@ export default {
     },
     methods: {
         inc(val) {
-           this.$store.state.count += val
+           this.$store.commit({ type: 'increment', val })
         }
     },
     computed: {
