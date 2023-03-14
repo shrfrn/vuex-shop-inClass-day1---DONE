@@ -19,7 +19,7 @@ export default {
             </nav>
 
             <section class="user-info">
-                {{ user.username }} | \${{ user.balance }} 
+                <RouterLink to="/user">{{ user.username }}</RouterLink> | \${{ user.balance }} 
             </section>
         </header>
     `,
