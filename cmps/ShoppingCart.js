@@ -14,7 +14,7 @@ export default {
     `,
     methods: {
         removeFromCart(productId) {
-            console.log('Remove from Cart:', productId)
+            this.$store.commit({ type: 'removeFromCart', productId })
         },
         checkout() {
             console.log('Checkout!')

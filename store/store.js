@@ -17,6 +17,10 @@ const storeOptions = {
         addToCart({ cart }, { product }){
             cart.push(product)
         },
+        removeFromCart({ cart }, { productId }) {
+            const idx = cart.findIndex(prd => prd._id === productId)
+            cart.splice(idx, 1)
+        },
     },
     getters: {
         cartTotal({ cart }) {
