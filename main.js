@@ -1,28 +1,13 @@
 'use strict'
 
 const { createApp } = Vue
-const { createStore } = Vuex
 
 import { router } from './router.js'
+import { store } from './store/store.js'
 
 import AppHeader from './cmps/AppHeader.js'
 import AppFooter from './cmps/AppFooter.js'
 import UserMsg from './cmps/UserMsg.js'
-
-const storeOptions = {
-    strict: true,
-    state() {
-        return {
-            count: 0,
-        }
-    },
-    mutations: {
-        increment(state, payload) {
-            state.count += payload.val
-        }
-    }
-}
-const store = createStore(storeOptions)
 
 const options = {
     template: `
