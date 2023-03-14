@@ -26,10 +26,12 @@ export default {
     data() {
         return {
             isCartShown : false,
-            user: { username: 'Baba', balance: 20 },
         }
     },
     computed : {
+        user() {
+            return this.$store.state.user
+        },  
         cartLength() {
             return 0
         },

@@ -18,7 +18,6 @@ export default {
     data() {
         return {
             products: [],
-            user: { username: 'Puki', balance: 20 },
         }
     },
     created() {
@@ -31,6 +30,9 @@ export default {
         }
     },
     computed: {
+        user() {
+            return this.$store.state.user
+        },  
         countForDisplay() {
             return this.$store.state.count
         },
