@@ -11,25 +11,25 @@ const storeOptions = {
         }
     },
     mutations: {
-        increment(state, payload) {
-            state.count += payload.val
+        increment(state, { val }) {
+            state.count += val
         },
-        addToCart(state, payload){
-            state.cart.push(payload.product)
+        addToCart({ cart }, { product }){
+            cart.push(product)
         },
     },
     getters: {
-        cartTotal(state) {
-            return state.cart.reduce((acc, prd) => acc + prd.price, 0)
+        cartTotal({ cart }) {
+            return cart.reduce((acc, prd) => acc + prd.price, 0)
         },
-        cart(state) {
-            return state.cart
+        cart({ cart }) {
+            return cart
         },
-        cartLength(state) {
-            return state.cart.length
+        cartLength({ cart }) {
+            return cart.length
         },
-        user(state) {
-            return state.user
+        user({ user }) {
+            return user
         },
     }
 }
