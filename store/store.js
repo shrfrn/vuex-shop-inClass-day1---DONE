@@ -33,6 +33,9 @@ const storeOptions = {
             state.user = user
             state.cart = []
         },
+        addFunds(state, { amount }) {
+            state.user.balance += amount
+        },
     },
     getters: {
         cartTotal({ cart }) {
