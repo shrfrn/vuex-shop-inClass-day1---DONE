@@ -1,3 +1,5 @@
+import { userService } from "../services/user.service.js"
+
 export default {
     props: ['products'],
     template: `
@@ -17,10 +19,14 @@ export default {
             this.$store.commit({ type: 'removeFromCart', productId })
         },
         checkout() {
-            this.$store.commit({ type: 'checkout'})
+            userService.addOrder(this.cart, this.cartTotal)
+                .then(updatedUser => this.$store.commit({ type: 'checkout', user: updatedUser }))
         },
     },
     computed: {
+        cart(){
+            return this.$store.getters.cart
+        },
         cartTotal() {
             return this.$store.getters.cartTotal
         },

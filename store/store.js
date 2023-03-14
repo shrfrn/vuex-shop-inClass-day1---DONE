@@ -29,16 +29,8 @@ const storeOptions = {
         addProduct({ products }, { product }) {
             products.push(product)
         },
-        checkout(state) {
-            const order = {
-                _id: utilService.makeId(),
-                createdAt: Date.now(),
-                items: state.cart,
-                total: this.getters.cartTotal,
-                status: 'pending',
-            }
-            state.user.orders.unshift(order)
-            state.user.balance -= this.getters.cartTotal
+        checkout(state, { user }) {
+            state.user = user
             state.cart = []
         },
     },
