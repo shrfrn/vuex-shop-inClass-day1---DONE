@@ -30,13 +30,13 @@ export default {
     },
     computed : {
         user() {
-            return this.$store.state.user
+            return this.$store.getters.user
         },  
         cartLength() {
-            return this.$store.state.cart.length
+            return this.$store.getters.cartLength
         },
         cartProducts() {
-            return this.$store.state.cart
+            return this.$store.getters.cart
         },
     },
     components: {

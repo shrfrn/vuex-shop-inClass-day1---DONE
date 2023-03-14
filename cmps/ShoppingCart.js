@@ -1,5 +1,5 @@
 export default {
-    props:['products'],
+    props: ['products'],
     template: `
         <section class="shopping-cart">
             <ul>
@@ -18,12 +18,11 @@ export default {
         },
         checkout() {
             console.log('Checkout!')
-         }
+        },
     },
     computed: {
         cartTotal() {
-            const cart = this.$store.state.cart
-            return cart.reduce((acc, prd) => acc + prd.price, 0)
+            return this.$store.getters.cartTotal
         },
-    }
+    },
 }
