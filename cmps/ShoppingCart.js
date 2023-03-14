@@ -1,4 +1,5 @@
 import { userService } from "../services/user.service.js"
+import { showErrorMsg } from "../services/event-bus.service.js"
 
 export default {
     props: ['products'],
@@ -19,6 +20,10 @@ export default {
             this.$store.commit({ type: 'removeFromCart', productId })
         },
         checkout() {
+            if(this.user.balance < this.cartTotal) {
+                showErrorMsg('Insufficient balance')
+                return
+            }
             userService.addOrder(this.cart, this.cartTotal)
                 .then(updatedUser => this.$store.commit({ type: 'checkout', user: updatedUser }))
         },
@@ -29,6 +34,9 @@ export default {
         },
         cartTotal() {
             return this.$store.getters.cartTotal
+        },
+        user() {
+            return this.$store.getters.user
         },
     },
 }
