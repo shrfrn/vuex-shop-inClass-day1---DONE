@@ -18,7 +18,8 @@ export default {
     },
     methods: {
         addProduct() {
-            console.log('Adding...', this.productToEdit)
+            productService.save(this.productToEdit)
+                .then(savedPrd => this.$store.commit({ type: 'addProduct', product: savedPrd }))
             this.productToEdit  = productService.getEmptyProduct()
         }
     },

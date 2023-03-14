@@ -25,6 +25,9 @@ const storeOptions = {
         setProducts(state, payload) {
             state.products = payload.products
         },
+        addProduct({ products }, { product }) {
+            products.push(product)
+        }
     },
     getters: {
         cartTotal({ cart }) {
