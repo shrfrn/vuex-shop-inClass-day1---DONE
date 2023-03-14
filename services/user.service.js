@@ -47,7 +47,7 @@ function signup(credentials) {
         .then(users => {
             const user = users.find(u => u.username === credentials.username)
             if (user) return Promise.reject('Username already taken')
-            return storageService.post(USER_KEY, {...credentials, balance: 10000, orders: []})
+            return storageService.post(USER_KEY, {...credentials, balance: 500, orders: []})
                 .then(user => {
                     return _saveUserToStorage(user)
                 })
@@ -85,10 +85,11 @@ function addOrder(cart, total) {
     user.balance -= total 
     user.orders.unshift(order)
 
-    return storageService.put(USER_KEY, user).then(savedUser => {
-        _saveUserToStorage(savedUser)
-        return savedUser
-    })
+    return storageService.put(USER_KEY, user)
+        .then(savedUser => {
+            _saveUserToStorage(savedUser)
+            return savedUser
+        })
 }
 
 function changeOrderStatus(orderId, status) {

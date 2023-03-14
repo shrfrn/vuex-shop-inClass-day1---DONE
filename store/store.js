@@ -27,7 +27,11 @@ const storeOptions = {
         },
         addProduct({ products }, { product }) {
             products.push(product)
-        }
+        },
+        checkout(state) {
+            state.user.balance -= this.getters.cartTotal
+            state.cart = []
+        },
     },
     getters: {
         cartTotal({ cart }) {
