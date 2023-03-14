@@ -7,7 +7,8 @@ export default {
     `,
     computed: {
         totalPrice() {
-            return 0
+            const cart = this.$store.state.cart
+            return cart.reduce((acc, prd) => acc + prd.price, 0)
         },
         countForDisplay() {
             return this.$store.state.count

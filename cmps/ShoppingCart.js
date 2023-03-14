@@ -21,6 +21,9 @@ export default {
          }
     },
     computed: {
-        cartTotal() { return 110 }
+        cartTotal() {
+            const cart = this.$store.state.cart
+            return cart.reduce((acc, prd) => acc + prd.price, 0)
+        },
     }
 }

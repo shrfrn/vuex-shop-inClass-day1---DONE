@@ -33,17 +33,10 @@ export default {
             return this.$store.state.user
         },  
         cartLength() {
-            return 0
-        },
-        cartTotal() {
-            return 0
+            return this.$store.state.cart.length
         },
         cartProducts() {
-            return [
-                { name: 'haha', _id: '123abc1'},
-                { name: 'lala', _id: '123abc2'},
-                { name: 'gaga', _id: '123abc3'},
-            ]
+            return this.$store.state.cart
         },
     },
     components: {
