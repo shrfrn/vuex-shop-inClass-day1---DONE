@@ -27,7 +27,7 @@ export default {
     },
     methods: {
         inc(val) {
-           console.log('INC INC')
+           this.$store.state.count += val
         }
     },
     computed: {
